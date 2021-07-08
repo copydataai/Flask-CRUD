@@ -1,16 +1,19 @@
-from flask import Flask
+from flask import Flask, render_template, redirect
+#from pymongo import MongoClient
+#import json
 
 app = Flask(__name__)
-app.config.update(
-    DEBUG=debug,
-    ENV=env,
-    SECRET_KEY= secret_key
-)
+#app.config.from_file('config.json', load=json.load)
 
 @app.route('/')
 def main():
-    return 'Hello'
+    return render_template('base.html')
 
+@app.route('/create')
+def create():
+    return render_template('index.html')
+
+    
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
