@@ -1,6 +1,10 @@
 version: "3"
 
 services:
+  flask:
+    image: python
+    restart: always
+    container_name: Flask
   db:
     image: mongo
     restart: always
@@ -9,3 +13,9 @@ services:
       - "27017:27017"
     volumes:
       - ./mongo_db:/usr/local/mongodb/
+  nginx:
+    image: nginx
+    restart: always
+    container_name: nginx
+    ports:
+      - "8080:80"
